@@ -266,7 +266,7 @@ export default function NewWorkoutPage() {
                             name="weight"
                             type="number"
                             min="0"
-                            placeholder="Weight"
+                            placeholder="Weight (120lbs)"
                             value={set.weight.toString()}
                             onChange={(e) => handleSetChange(exerciseIndex, setIndex, e)}
                           />
@@ -277,7 +277,7 @@ export default function NewWorkoutPage() {
                             name="reps"
                             type="number"
                             min="0"
-                            placeholder="Reps"
+                            placeholder="Reps (10-12)"
                             value={set.reps.toString()}
                             onChange={(e) => handleSetChange(exerciseIndex, setIndex, e)}
                           />

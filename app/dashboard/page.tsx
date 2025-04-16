@@ -116,7 +116,7 @@ export default function DashboardPage() {
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{isLoading ? "..." : "0"} days</div>
+              <div className="text-2xl font-bold">{isLoading ? "..." : stats?.currentStreak || 0} days</div>
             </CardContent>
           </Card>
           <Card>
@@ -125,7 +125,7 @@ export default function DashboardPage() {
               <Calendar className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{isLoading ? "..." : "0"} workouts</div>
+              <div className="text-2xl font-bold">{isLoading ? "..." : stats?.workoutsThisWeek || 0} workouts</div>
             </CardContent>
           </Card>
           <Card>

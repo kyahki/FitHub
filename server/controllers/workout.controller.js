@@ -209,11 +209,33 @@ export const getWorkoutStats = async (req, res) => {
       { $limit: 10 },
     ])
 
+    // Calculate current streak
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const workoutDates = workoutsByDay.map(w => new Date(w._id))
+    let currentStreak = 0
+    let checkDate = today
+
+    while (workoutDates.some(date => date.getTime() === checkDate.getTime())) {
+      currentStreak++
+      checkDate.setDate(checkDate.getDate() - 1)
+    }
+
+    // Calculate workouts this week
+    const startOfWeek = new Date(today)
+    startOfWeek.setDate(today.getDate() - today.getDay())
+    const workoutsThisWeek = workoutsByDay.filter(w => {
+      const workoutDate = new Date(w._id)
+      return workoutDate >= startOfWeek && workoutDate <= today
+    }).length
+
     res.status(200).json({
       success: true,
       data: {
         workoutsByDay,
         exerciseFrequency,
+        currentStreak,
+        workoutsThisWeek
       },
     })
   } catch (error) {
