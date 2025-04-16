@@ -2,27 +2,6 @@
 
 A MERN stack application for tracking workouts with GitHub-style contribution graphs.
 
-## Project Structure
-
-\`\`\`
-fithub/
-├── client/               # Next.js frontend
-│   ├── app/              # Next.js app directory
-│   ├── components/       # React components
-│   ├── context/          # Context providers
-│   ├── services/         # API services
-│   └── ...
-├── server/               # Express backend
-│   ├── controllers/      # Route controllers
-│   ├── middleware/       # Express middleware
-│   ├── models/           # Mongoose models
-│   ├── routes/           # API routes
-│   ├── .env              # Environment variables
-│   ├── package.json      # Backend dependencies
-│   └── server.js         # Entry point
-└── README.md             # Project documentation
-\`\`\`
-
 ## Features
 
 - User authentication (register, login, logout)
