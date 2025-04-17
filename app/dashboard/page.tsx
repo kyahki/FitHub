@@ -80,7 +80,9 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4">
             <ThemeSwitcher />
             <nav className="flex items-center gap-4 sm:gap-6">
-              <span className="text-sm font-medium">Welcome, {user.firstName}</span>
+            <Link href="/profile" className="transition-transform hover:scale-105 active:scale-95">
+            <span className="text-sm font-medium">Welcome, {user.firstName}</span>
+            </Link>
               <Button variant="ghost" size="icon" onClick={logout}>
                 <LogOut className="h-5 w-5" />
                 <span className="sr-only">Log out</span>

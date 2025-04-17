@@ -26,9 +26,27 @@ api.interceptors.request.use(
   (error) => Promise.reject(error),
 )
 
+interface RegisterUserData {
+  email: string
+  password: string
+  firstName?: string
+  lastName?: string
+}
+
+interface UpdatePasswordData {
+  currentPassword: string
+  newPassword: string
+}
+
+interface UpdateProfileData {
+  firstName?: string
+  lastName?: string
+  email?: string
+}
+
 // Auth services
 export const authService = {
-  register: async (userData: any) => {
+  register: async (userData: RegisterUserData) => {
     const response = await api.post("/auth/register", userData)
     if (response.data.token) {
       localStorage.setItem("token", response.data.token)
@@ -52,6 +70,11 @@ export const authService = {
 
   getMe: async () => {
     const response = await api.get("/auth/me")
+    return response.data
+  },
+
+  updatePassword: async (data: UpdatePasswordData) => {
+    const response = await api.put("/auth/password", data)
     return response.data
   },
 }
@@ -91,12 +114,12 @@ export const workoutService = {
 
 // User services
 export const userService = {
-  updateProfile: async (userData: any) => {
+  updateProfile: async (userData: UpdateProfileData) => {
     const response = await api.put("/users/profile", userData)
     return response.data
   },
 
-  updatePassword: async (passwordData: any) => {
+  updatePassword: async (passwordData: UpdatePasswordData) => {
     const response = await api.put("/users/password", passwordData)
     return response.data
   },
