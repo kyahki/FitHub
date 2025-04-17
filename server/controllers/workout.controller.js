@@ -216,9 +216,30 @@ export const getWorkoutStats = async (req, res) => {
     let currentStreak = 0
     let checkDate = today
 
-    while (workoutDates.some(date => date.getTime() === checkDate.getTime())) {
-      currentStreak++
-      checkDate.setDate(checkDate.getDate() - 1)
+    // Sort dates in descending order
+    workoutDates.sort((a, b) => b.getTime() - a.getTime())
+
+    // Find the most recent workout
+    const lastWorkout = workoutDates[0]
+    if (lastWorkout) {
+      // Only count streak if last workout was today or yesterday
+      const daysSinceLastWorkout = Math.floor((today.getTime() - lastWorkout.getTime()) / (1000 * 60 * 60 * 24))
+      if (daysSinceLastWorkout <= 1) {
+        currentStreak = 1
+        checkDate = new Date(lastWorkout)
+        checkDate.setDate(checkDate.getDate() - 1)
+
+        // Check consecutive days before the last workout
+        for (let i = 1; i < workoutDates.length; i++) {
+          const expectedDate = checkDate.getTime()
+          if (workoutDates[i].getTime() === expectedDate) {
+            currentStreak++
+            checkDate.setDate(checkDate.getDate() - 1)
+          } else {
+            break
+          }
+        }
+      }
     }
 
     // Calculate workouts this week

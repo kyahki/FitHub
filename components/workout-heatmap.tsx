@@ -71,20 +71,20 @@ export function WorkoutHeatmap({ data }: WorkoutHeatmapProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-1 flex justify-between text-xs text-muted-foreground">
+      <div className="mb-1 flex justify-between text-xs text-muted-foreground overflow-x-auto">
         {monthLabels.map((month, i) => (
           <div key={i}>{month}</div>
         ))}
       </div>
-      <div className="flex">
-        <div className="mr-2 flex flex-col justify-between text-xs text-muted-foreground">
+      <div className="flex overflow-x-auto pb-2">
+        <div className="mr-2 flex flex-col justify-between text-xs text-muted-foreground sticky left-0 bg-background">
           {dayLabels.map((day, i) => (
             <div key={i} className="h-8 py-1">
               {day}
             </div>
           ))}
         </div>
-        <div className="grid w-full grid-rows-7 gap-1">
+        <div className="grid w-full grid-rows-7 gap-1 min-w-[800px]">
           {calendarData.map((row, rowIndex) => (
             <div key={rowIndex} className="grid grid-flow-col gap-1">
               {row.map((day, colIndex) => (
