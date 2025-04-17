@@ -257,16 +257,22 @@ export default function NewWorkoutPage() {
 
                   <div className="space-y-2">
                     <Label>Sets</Label>
+                    <div className="grid grid-cols-12 gap-2 items-center mb-2">
+                      <div className="col-span-1"></div>
+                      <div className="col-span-5 text-sm font-medium text-muted-foreground">Weight (Kg)</div>
+                      <div className="col-span-5 text-sm font-medium text-muted-foreground">Reps</div>
+                      <div className="col-span-1"></div>
+                    </div>
                     {exercise.sets.map((set, setIndex) => (
                       <div key={setIndex} className="mt-2 grid grid-cols-12 gap-2 items-center">
                         <div className="col-span-1 text-sm font-medium text-muted-foreground">{setIndex + 1}</div>
                         <div className="col-span-5">
                           <Input
                             id={`exercise-${exerciseIndex}-set-${setIndex}-weight`}
-                            name="weight"
                             type="number"
+                            name="weight"
                             min="0"
-                            placeholder="Weight (120lbs)"
+                            placeholder="0"
                             value={set.weight.toString()}
                             onChange={(e) => handleSetChange(exerciseIndex, setIndex, e)}
                           />
@@ -274,10 +280,10 @@ export default function NewWorkoutPage() {
                         <div className="col-span-5">
                           <Input
                             id={`exercise-${exerciseIndex}-set-${setIndex}-reps`}
-                            name="reps"
                             type="number"
+                            name="reps"
                             min="0"
-                            placeholder="Reps (10-12)"
+                            placeholder="0"
                             value={set.reps.toString()}
                             onChange={(e) => handleSetChange(exerciseIndex, setIndex, e)}
                           />
