@@ -18,10 +18,6 @@ FitHub is a personal workout journal built with the MERN stack. It allows users 
 - **Authentication**: JWT (JSON Web Tokens)
 - **Styling**: Tailwind CSS
 
-## 📸 Screenshots
-
-*Include screenshots of the application here to showcase the UI and features.*
-
 ## 🧑‍💻 Getting Started
 
 ### Prerequisites
